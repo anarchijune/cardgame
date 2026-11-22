@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T06:37:04.420Z",
+  "title": "Design System: 카드 짝 맞추기",
+  "extensions": {
+    "colorMeta": {
+      "blanket": {
+        "role": "primary",
+        "displayName": "Blanket Red",
+        "canonical": "#8a1c1c",
+        "tonalRamp": [
+          "#370b0b",
+          "#531111",
+          "#6e1616",
+          "#8a1c1c",
+          "#a14949",
+          "#b97777",
+          "#d0a4a4",
+          "#e8d2d2"
+        ]
+      },
+      "blanket-deep": {
+        "role": "primary",
+        "displayName": "Deep Blanket",
+        "canonical": "#6c1414",
+        "tonalRamp": [
+          "#2b0808",
+          "#410c0c",
+          "#561010",
+          "#6c1414",
+          "#894343",
+          "#a77272",
+          "#c4a1a1",
+          "#e2d0d0"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Hwatu Gold",
+        "canonical": "#f2b632",
+        "tonalRamp": [
+          "#614914",
+          "#916d1e",
+          "#c29228",
+          "#f2b632",
+          "#f5c55b",
+          "#f7d384",
+          "#fae2ad",
+          "#fcf0d6"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Card Ink",
+        "canonical": "#161312",
+        "tonalRamp": [
+          "#090807",
+          "#0d0b0b",
+          "#120f0e",
+          "#161312",
+          "#454241",
+          "#737171",
+          "#a2a1a0",
+          "#d0d0d0"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#2a2321",
+        "tonalRamp": [
+          "#110e0d",
+          "#191514",
+          "#221c1a",
+          "#2a2321",
+          "#554f4d",
+          "#7f7b7a",
+          "#aaa7a6",
+          "#d4d3d3"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Blanket Cream",
+        "canonical": "#fff5f0",
+        "tonalRamp": [
+          "#666260",
+          "#999390",
+          "#ccc4c0",
+          "#fff5f0",
+          "#fff7f3",
+          "#fff9f6",
+          "#fffbf9",
+          "#fffdfc"
+        ]
+      },
+      "pine": {
+        "role": "secondary",
+        "displayName": "Pine",
+        "canonical": "#2f6b3a",
+        "tonalRamp": [
+          "#132b17",
+          "#1c4023",
+          "#26562e",
+          "#2f6b3a",
+          "#598961",
+          "#82a689",
+          "#acc4b0",
+          "#d5e1d8"
+        ]
+      },
+      "plum": {
+        "role": "secondary",
+        "displayName": "Plum",
+        "canonical": "#a52a5f",
+        "tonalRamp": [
+          "#421126",
+          "#631939",
+          "#84224c",
+          "#a52a5f",
+          "#b7557f",
+          "#c97f9f",
+          "#dbaabf",
+          "#edd4df"
+        ]
+      },
+      "cherry": {
+        "role": "secondary",
+        "displayName": "Cherry",
+        "canonical": "#ec7fa4",
+        "tonalRamp": [
+          "#5e3342",
+          "#8e4c62",
+          "#bd6683",
+          "#ec7fa4",
+          "#f099b6",
+          "#f4b2c8",
+          "#f7ccdb",
+          "#fbe5ed"
+        ]
+      },
+      "peony": {
+        "role": "secondary",
+        "displayName": "Peony",
+        "canonical": "#d62f2f",
+        "tonalRamp": [
+          "#561313",
+          "#801c1c",
+          "#ab2626",
+          "#d62f2f",
+          "#de5959",
+          "#e68282",
+          "#efacac",
+          "#f7d5d5"
+        ]
+      },
+      "chrysanthemum": {
+        "role": "secondary",
+        "displayName": "Chrysanthemum",
+        "canonical": "#e3a91c",
+        "tonalRamp": [
+          "#5b440b",
+          "#886511",
+          "#b68716",
+          "#e3a91c",
+          "#e9ba49",
+          "#eecb77",
+          "#f4dda4",
+          "#f9eed2"
+        ]
+      },
+      "maple": {
+        "role": "secondary",
+        "displayName": "Maple",
+        "canonical": "#e8731a",
+        "tonalRamp": [
+          "#5d2e0a",
+          "#8b4510",
+          "#ba5c15",
+          "#e8731a",
+          "#ed8f48",
+          "#f1ab76",
+          "#f6c7a3",
+          "#fae3d1"
+        ]
+      },
+      "iris": {
+        "role": "secondary",
+        "displayName": "Iris",
+        "canonical": "#2b4fa8",
+        "tonalRamp": [
+          "#112043",
+          "#1a2f65",
+          "#223f86",
+          "#2b4fa8",
+          "#5572b9",
+          "#8095cb",
+          "#aab9dc",
+          "#d5dcee"
+        ]
+      },
+      "paulownia": {
+        "role": "secondary",
+        "displayName": "Paulownia",
+        "canonical": "#6a3fa3",
+        "tonalRamp": [
+          "#2a1941",
+          "#402662",
+          "#553282",
+          "#6a3fa3",
+          "#8865b5",
+          "#a68cc8",
+          "#c3b2da",
+          "#e1d9ed"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Title and move count."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Ranking heading."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Win text, rank numerals, move values."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Lede, ranking copy, inputs."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, names, move label."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 6px 10px -2px rgb(0 0 0 / 0.5)",
+        "purpose": "Cards at rest."
+      },
+      {
+        "name": "card-lifted",
+        "value": "0 12px 16px -4px rgb(0 0 0 / 0.55)",
+        "purpose": "Hover on enabled card."
+      },
+      {
+        "name": "card-pressed",
+        "value": "0 1px 2px rgb(0 0 0 / 0.5)",
+        "purpose": "Matched pairs."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All card, button and panel motion."
+      },
+      {
+        "name": "deal",
+        "value": "0.55s, 45ms stagger",
+        "purpose": "Cards dealt in on load."
+      },
+      {
+        "name": "flip",
+        "value": "0.45s rotateY(180deg)",
+        "purpose": "Card flip."
+      },
+      {
+        "name": "sweep",
+        "value": "0.8s, 25ms stagger; win panel pops at 1.3s",
+        "purpose": "Win: cards pile at board centre."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Gold action button (restart, submit).",
+      "html": "<button class=\"ds-btn\">다시 하기</button>",
+      "css": ".ds-btn{background:#f2b632;color:#161312;border:none;border-radius:4px;padding:14px 28px;font:700 1.125rem system-ui,sans-serif;cursor:pointer;transition:transform .2s cubic-bezier(.16,1,.3,1),background-color .2s}.ds-btn:hover{background:#ffc94d;transform:translateY(-2px)}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:4px solid #f2b632;outline-offset:3px}"
+    },
+    {
+      "name": "Card Back",
+      "kind": "card",
+      "refersTo": "card-back",
+      "description": "Face-down hwatu card: ink with a blanket disc.",
+      "html": "<div class=\"ds-back\"><span></span></div>",
+      "css": ".ds-back{width:100px;aspect-ratio:5/7;display:flex;align-items:center;justify-content:center;background:#161312;border:4px solid #161312;border-radius:4px;box-shadow:0 6px 10px -2px rgb(0 0 0/.5)}.ds-back span{width:34%;aspect-ratio:1;border-radius:50%;background:#8a1c1c}"
+    },
+    {
+      "name": "Card Front (Maple)",
+      "kind": "card",
+      "refersTo": "card-front",
+      "description": "Face-up card: flat month colour, ink border, drawn flower.",
+      "html": "<div class=\"ds-front\"><svg viewBox=\"0 0 40 40\" width=\"100%\" height=\"100%\"><g fill=\"#fff\" stroke=\"#161312\" stroke-width=\"2.5\"><ellipse cx=\"20\" cy=\"10\" rx=\"6\" ry=\"9\"/><ellipse cx=\"20\" cy=\"10\" rx=\"6\" ry=\"9\" transform=\"rotate(120 20 20)\"/><ellipse cx=\"20\" cy=\"10\" rx=\"6\" ry=\"9\" transform=\"rotate(240 20 20)\"/></g><circle cx=\"20\" cy=\"20\" r=\"4\" fill=\"#161312\"/></svg></div>",
+      "css": ".ds-front{width:100px;aspect-ratio:5/7;padding:8% 10%;background:#e8731a;border:4px solid #161312;border-radius:4px;box-shadow:0 6px 10px -2px rgb(0 0 0/.5)}"
+    },
+    {
+      "name": "Matched Card",
+      "kind": "card",
+      "refersTo": "card-front",
+      "description": "Pair taken off the table: pressed flat, dimmed, gold rim.",
+      "html": "<div class=\"ds-matched\"></div>",
+      "css": ".ds-matched{width:100px;aspect-ratio:5/7;background:#e8731a;filter:saturate(.5) brightness(.8);border:4px solid #f2b632;border-radius:4px;transform:translateY(3px) scale(.94);box-shadow:0 1px 2px rgb(0 0 0/.5)}"
+    },
+    {
+      "name": "Ranking Row",
+      "kind": "custom",
+      "refersTo": "rank-row",
+      "description": "Soft-ink bar with gold display numeral, name and moves.",
+      "html": "<div class=\"ds-rank\"><b>1</b><span>이름</span><i>12</i></div>",
+      "css": ".ds-rank{display:flex;align-items:baseline;gap:16px;padding:12px 18px;border-radius:4px;background:#2a2321;color:#fff5f0;font:700 1.25rem system-ui,sans-serif}.ds-rank b{width:2ch;text-align:center;font:400 1.5rem sans-serif;color:#f2b632}.ds-rank span{flex:1}.ds-rank i{font:400 1.5rem sans-serif;font-style:normal}"
+    },
+    {
+      "name": "Name Field",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "Cream field with ink text.",
+      "html": "<input class=\"ds-input\" placeholder=\"이름\">",
+      "css": ".ds-input{padding:12px 14px;border:none;border-radius:4px;background:#fff5f0;color:#161312;font:1.125rem system-ui,sans-serif}.ds-input::placeholder{color:#6b5f57}.ds-input:focus-visible{outline:4px solid #f2b632;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Holiday Blanket",
+    "overview": "The page is a hwatu table: a blanket-red ground woven with a faint flat twill, a deeper red board set into it, and real-proportion (5:7) cards lying on top. Everything that is not a card is flat. Tone steps do the work gradients would do, and the only shadows in the system belong to the cards, because cards are the only physical objects on the table.",
+    "keyCharacteristics": [
+      "One red ground, one deeper board red, near-black ink, one gold accent.",
+      "Flat fills; no gradients. Cards are the only elevated things.",
+      "4px ink border on card faces, 4px radius on every surface.",
+      "All art is drawn SVG; no raster images, no emoji.",
+      "Motion is physical: deal, flip, press flat, sweep."
+    ],
+    "rules": [
+      {
+        "name": "The Gold Is The Only Accent Rule",
+        "body": "Gold marks what the player acts on or has earned. Month colours never leave the card faces.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Gradient Rule",
+        "body": "Surfaces are flat fills; the twill is a two-tone pattern, not a gradient.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Heavy Face Rule",
+        "body": "Black Han Sans is for the title, numbers and win text only; sentences are always in the body sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Cards Cast Rule",
+        "body": "Shadows belong to cards. Buttons, panels, rows and the board stay flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the ground blanket red and let gold be the single accent.",
+      "Do use 4px radius everywhere and a 4px ink border on card faces.",
+      "Do draw art as flat SVG in white and ink on a flat month colour.",
+      "Do give new interactive elements the global 4px gold focus outline.",
+      "Do disable motion under prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't use gradients, glows or pastel tints for surfaces.",
+      "Don't add shadows to anything that is not a physical card.",
+      "Don't use emoji or icon glyphs as art; draw it.",
+      "Don't let month colours appear outside card faces.",
+      "Don't set sentences in Black Han Sans."
+    ]
+  }
+}

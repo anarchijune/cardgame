@@ -4,7 +4,18 @@ export interface CardData {
   matched: boolean
 }
 
-const SYMBOLS = ['🍎', '🍌', '🍇', '🍓', '🍉', '🍒', '🥝', '🍑']
+export const FLOWERS = ['pine', 'plum', 'cherry', 'peony', 'mum', 'maple', 'iris', 'paulownia'] as const
+
+export const FLOWER_NAMES: Record<string, string> = {
+  pine: '소나무',
+  plum: '매화',
+  cherry: '벚꽃',
+  peony: '모란',
+  mum: '국화',
+  maple: '단풍',
+  iris: '난초',
+  paulownia: '오동',
+}
 
 export function shuffle<T>(items: readonly T[]): T[] {
   const arr = [...items]
@@ -16,7 +27,7 @@ export function shuffle<T>(items: readonly T[]): T[] {
 }
 
 export function createDeck(): CardData[] {
-  return shuffle([...SYMBOLS, ...SYMBOLS]).map((symbol, id) => ({
+  return shuffle([...FLOWERS, ...FLOWERS]).map((symbol, id) => ({
     id,
     symbol,
     matched: false,

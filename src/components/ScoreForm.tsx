@@ -28,6 +28,7 @@ export default function ScoreForm({ moves, onSubmitted }: Props) {
   return (
     <form className="score-form" onSubmit={handleSubmit}>
       <input
+        autoFocus
         type="text"
         value={name}
         maxLength={20}

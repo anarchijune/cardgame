@@ -26,3 +26,10 @@ dist-ssr
 # env
 .env
 .env.local
+
+# tool working state
+.omc/
+.impeccable/hook.cache.json
+.impeccable/questions/
+.impeccable/review/
+.impeccable/mocks/

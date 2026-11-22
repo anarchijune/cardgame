@@ -1,27 +1,135 @@
-.app {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 24px 16px;
-  text-align: center;
+/* ---------- table (the blanket) ---------- */
+
+.table {
+  --pad: clamp(16px, 3vw, 40px);
+  /* a woven twill on the blanket; flat tone steps, no gradients */
+  --twill: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M-2 2L2 -2M0 8L8 0M6 10L10 6' stroke='%23000' stroke-opacity='.1' stroke-width='1.6'/%3E%3C/svg%3E");
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  min-height: 100svh;
+  padding: var(--pad);
+  background-color: var(--blanket);
+  background-image: var(--twill);
 }
 
-.status {
-  margin: 0 0 16px;
+/* phone: title and moves share one row so the whole board fits the first screen */
+.table-side {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'title moves'
+    'title restart';
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.title {
+  grid-area: title;
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 2.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.lede {
+  display: none;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.moves {
+  grid-area: moves;
+  justify-self: end;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+}
+
+.moves-num {
+  font-family: var(--display);
+  font-size: 2.75rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.moves-label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.restart {
+  grid-area: restart;
+  justify-self: end;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease),
+    background-color 0.2s;
+}
+
+.restart:hover {
+  background: #ffc94d;
+  transform: translateY(-2px);
+}
+
+.restart:active {
+  transform: translateY(1px);
+}
+
+/* ---------- board and cards ---------- */
+
+.board-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 7;
 }
 
 .board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-rows: repeat(4, 1fr);
+  gap: clamp(6px, 1.2vw, 14px);
+  width: 100%;
+  height: 100%;
+  padding: clamp(8px, 1.4vw, 16px);
+  border-radius: var(--radius);
+  background: var(--blanket-deep);
 }
 
 .card {
-  aspect-ratio: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
   padding: 0;
   border: none;
+  border-radius: var(--radius);
   background: none;
-  perspective: 600px;
+  perspective: 700px;
   cursor: pointer;
+  box-shadow: 0 6px 10px -2px rgb(0 0 0 / 0.5); /* taste-skill-ignore: physical cards lying on a table */
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+  animation: deal 0.55s var(--ease) calc(var(--i) * 45ms) backwards;
+}
+
+.card:not(:disabled):hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 16px -4px rgb(0 0 0 / 0.55); /* taste-skill-ignore: card lifted off the table */
 }
 
 .card:disabled {
@@ -34,7 +142,7 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.4s;
+  transition: transform 0.45s var(--ease);
 }
 
 .card.flipped .card-inner {
@@ -47,127 +155,314 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  font-size: clamp(1.6rem, 8vw, 2.6rem);
+  border: 4px solid var(--ink);
+  border-radius: var(--radius);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .card-back {
-  background: #4f46e5;
-  color: #fff;
-  font-weight: 700;
+  background: var(--ink);
+}
+
+.card-back-mark {
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--blanket);
 }
 
 .card-front {
-  background: #fff;
-  border: 2px solid #4f46e5;
+  padding: 8% 10%;
+  background: var(--face, #fff);
   transform: rotateY(180deg);
 }
 
-.card.matched .card-front {
-  background: #dcfce7;
-  border-color: #22c55e;
+.motif {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.win {
-  margin: 16px 0 0;
+.card[data-flower='pine'] { --face: #2f6b3a; }
+.card[data-flower='plum'] { --face: #a52a5f; }
+.card[data-flower='cherry'] { --face: #ec7fa4; }
+.card[data-flower='peony'] { --face: #d62f2f; }
+.card[data-flower='mum'] { --face: #e3a91c; }
+.card[data-flower='maple'] { --face: #e8731a; }
+.card[data-flower='iris'] { --face: #2b4fa8; }
+.card[data-flower='paulownia'] { --face: #6a3fa3; }
+
+/* a matched pair is taken off the table: pressed flat, dulled, gold rim */
+.card.matched {
+  transform: translateY(3px) scale(0.94);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.5); /* taste-skill-ignore: card pressed flat on the table */
+}
+
+.card.matched .card-front {
+  filter: saturate(0.5) brightness(0.8);
+}
+
+.card.matched .card-face {
+  border-color: var(--gold);
+}
+
+@keyframes deal {
+  from {
+    opacity: 0;
+    transform: translateY(-28px) rotate(-4deg);
+  }
+}
+
+/* the win: every card is swept to the middle of the table */
+.board.won .card {
+  animation: sweep 0.8s var(--ease) calc(0.5s + var(--i) * 25ms) forwards;
+}
+
+@keyframes sweep {
+  to {
+    transform: translate(calc(var(--sx) * 100%), calc(var(--sy) * 100%)) rotate(var(--sr)) scale(0.9);
+  }
+}
+
+.win-panel {
+  position: absolute;
+  top: 76%;
+  left: 50%;
+  z-index: 2;
+  width: min(88%, 400px);
+  padding: 24px;
+  border: 4px solid var(--gold);
+  border-radius: var(--radius);
+  background: var(--ink);
+  transform: translate(-50%, -50%);
+  animation: pop 0.5s var(--ease) 1.3s backwards;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.94);
+  }
+}
+
+.win-text {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 1.1;
+  color: var(--gold);
+}
+
+/* ---------- ranking ---------- */
+
+.leaderboard {
+  display: grid;
+  gap: 24px;
+  padding: clamp(40px, 7vw, 88px) clamp(16px, 3vw, 40px);
+  background: var(--ink);
+}
+
+.leaderboard h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+}
+
+.leaderboard p {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.lb-note {
+  margin-bottom: 16px;
+}
+
+.leaderboard ol {
+  display: grid;
+  gap: 10px;
+  max-width: 720px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rank;
+}
+
+.leaderboard li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  background: var(--ink-soft);
+  counter-increment: rank;
+}
+
+.leaderboard li::before {
+  content: counter(rank);
+  flex: none;
+  width: 2ch;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  color: var(--gold);
+  text-align: center;
+}
+
+.lb-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
   font-size: 1.25rem;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.restart {
-  margin-top: 16px;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #4f46e5;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
+.lb-moves {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
 }
+
+.leaderboard li.lb-empty {
+  background: #1f1a18;
+}
+
+.leaderboard li.lb-empty::before {
+  color: #8d7f78;
+}
+
+.lb-empty .lb-name {
+  font-weight: 500;
+  color: #a39690;
+}
+
+/* ---------- score form ---------- */
 
 .score-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 12px;
+  gap: 10px;
 }
 
 .score-form input {
   flex: 1 1 160px;
-  max-width: 220px;
-  padding: 8px 12px;
-  border: 2px solid #c7d2fe;
-  border-radius: 8px;
-  font-size: 1rem;
+  min-width: 0;
+  padding: 12px 14px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--text);
+  color: var(--ink);
+  font-size: 1.125rem;
+}
+
+.score-form input::placeholder {
+  color: #6b5f57;
 }
 
 .score-form button {
-  padding: 8px 16px;
+  padding: 12px 22px;
   border: none;
-  border-radius: 8px;
-  background: #22c55e;
-  color: #fff;
-  font-size: 1rem;
+  border-radius: var(--radius);
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .score-form button:disabled {
-  opacity: 0.5;
+  opacity: 0.55;
   cursor: default;
 }
 
 .form-error {
   width: 100%;
   margin: 0;
-  color: #dc2626;
+  font-weight: 700;
 }
 
 .saved {
-  margin: 12px 0 0;
-  color: #16a34a;
-  font-weight: 600;
-}
-
-.leaderboard {
-  margin-top: 32px;
-  padding: 16px;
-  border-radius: 12px;
-  background: #fff;
-  text-align: left;
-}
-
-.leaderboard h2 {
-  margin: 0 0 12px;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-.leaderboard ol {
   margin: 0;
-  padding-left: 1.5rem;
-}
-
-.leaderboard li {
-  padding: 4px 0;
-}
-
-.leaderboard li::marker {
+  font-size: 1.125rem;
   font-weight: 700;
-  color: #4f46e5;
 }
 
-.lb-name {
-  display: inline-block;
-  max-width: 60%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
+/* ---------- wide screens: text left, board right ---------- */
+
+@media (min-width: 900px) {
+  .table {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: clamp(32px, 5vw, 80px);
+  }
+
+  .table-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-block: 8px;
+  }
+
+  .title {
+    font-size: clamp(2.6rem, 7vw, 6rem);
+  }
+
+  .lede {
+    display: block;
+    max-width: 30ch;
+  }
+
+  .moves {
+    margin-top: auto;
+    gap: 12px;
+  }
+
+  .moves-num {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+  }
+
+  .moves-label {
+    font-size: 1.125rem;
+  }
+
+  .restart {
+    padding: 14px 28px;
+    font-size: 1.125rem;
+  }
+
+  .board-wrap {
+    width: auto;
+    height: calc(100svh - 2 * var(--pad));
+    max-height: 1000px;
+    align-self: center;
+  }
+
+  .leaderboard {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 720px);
+    gap: clamp(32px, 5vw, 80px);
+  }
+
+  .leaderboard > :not(h2) {
+    grid-column: 2;
+  }
+
+  .leaderboard h2 {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }
 
-.lb-moves {
-  float: right;
-  font-weight: 600;
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card-inner,
+  .restart,
+  .win-panel,
+  .board.won .card {
+    animation: none;
+    transition: none;
+  }
 }

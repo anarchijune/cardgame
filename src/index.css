@@ -1,10 +1,45 @@
 :root {
-  font-family: system-ui, 'Segoe UI', 'Malgun Gothic', sans-serif;
-  color: #1f2937;
-  background: #f3f4f6;
+  --blanket: #8a1c1c;
+  --blanket-deep: #6c1414;
+  --ink: #161312;
+  --ink-soft: #2a2321;
+  --text: #fff5f0;
+  --gold: #f2b632;
+  --radius: 4px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --display: 'Black Han Sans', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --body: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif;
+
+  font-family: var(--body);
+  color: var(--text);
+  background: var(--blanket);
+  color-scheme: dark;
+  scrollbar-color: var(--gold) var(--ink);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  background: var(--blanket);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 4px solid var(--gold);
+  outline-offset: 3px;
+}
+
+button,
+input {
+  font: inherit;
 }
